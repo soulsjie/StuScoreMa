@@ -85,5 +85,28 @@ namespace dataADUstudy
             }
             return false;
         }
+        //获取成绩表中的数据
+        public Boolean GetScoreData(string str)
+        {
+            sqlCmd.CommandText = str;
+            Boolean tag = false;
+            MySqlDataReader rec = sqlCmd.ExecuteReader();//创建结果集
+            int aa = 0;
+            //初始化数据
+            ScoreInfo.id.Clear();
+            while (rec.Read())  //查询到数据结果
+            {
+                ScoreInfo.id.Add(rec.GetString(0));     //将查询到的id存储到数据实体类
+                ScoreInfo.number.Add(rec.GetString(1));//将查询到的学号、教师编号存储到数据实体类
+                ScoreInfo.xueqi.Add(rec.GetString(2));//将查询到的学期归属存储到数据实体类
+                ScoreInfo.kecheng.Add(rec.GetString(3));//将查询到的课程名存储到数据实体类
+                ScoreInfo.chengji.Add(rec.GetString(4));//将查询到的成绩存储到数据实体类
+                ScoreInfo.name.Add(rec.GetString(5));//将查询到的用户名存储到数据实体类
+                tag = true;    //查询到用户数据
+                aa++;
+            }
+            Console.WriteLine("获取到"+aa+"条数据");
+            return tag;
+        }
     }
 }

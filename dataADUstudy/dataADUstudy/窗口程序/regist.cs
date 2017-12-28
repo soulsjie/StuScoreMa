@@ -22,6 +22,7 @@ namespace dataADUstudy.窗口程序
         //注册界面初始化
         private void regist_Load(object sender, EventArgs e)
         {
+            MaximizeBox = false;        //关闭登录窗口的最大化功能
             RegistIdentity.SelectedIndex = 2;//设置下拉菜单的默认选项
             //将所有提示信息的lable置空
             label8 .Text= "";
@@ -120,7 +121,7 @@ namespace dataADUstudy.窗口程序
                     DialogResult dr = MessageBox.Show("注册成功返回登录", "标题", MessageBoxButtons.OK, MessageBoxIcon.Question);
                     if (dr == DialogResult.OK)
                     {
-                        this.Visible = false;
+                        this.Visible = false;//隐藏当前窗口
                     }
                 }
             }

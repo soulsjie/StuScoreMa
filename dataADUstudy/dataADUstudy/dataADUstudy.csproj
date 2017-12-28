@@ -60,6 +60,7 @@
     <Compile Include="工具类\YanZhenMa.cs" />
     <Compile Include="数据实体类\LoginInfo.cs" />
     <Compile Include="数据实体类\quanju.cs" />
+    <Compile Include="数据实体类\ScoreInfo.cs" />
     <Compile Include="窗口程序\login.cs">
       <SubType>Form</SubType>
     </Compile>
