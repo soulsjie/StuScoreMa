@@ -1,0 +1,11 @@
+C:\Users\jie.jie-PC\Desktop\c#dataADUstudy\dataADUstudy\dataADUstudy\bin\Debug\dataADUstudy.exe
+C:\Users\jie.jie-PC\Desktop\c#dataADUstudy\dataADUstudy\dataADUstudy\bin\Debug\dataADUstudy.pdb
+C:\Users\jie.jie-PC\Desktop\c#dataADUstudy\dataADUstudy\dataADUstudy\obj\x86\Debug\dataADUstudy.ZhuChaiDan.resources
+C:\Users\jie.jie-PC\Desktop\c#dataADUstudy\dataADUstudy\dataADUstudy\obj\x86\Debug\dataADUstudy.Properties.Resources.resources
+C:\Users\jie.jie-PC\Desktop\c#dataADUstudy\dataADUstudy\dataADUstudy\obj\x86\Debug\dataADUstudy.csproj.GenerateResource.Cache
+C:\Users\jie.jie-PC\Desktop\c#dataADUstudy\dataADUstudy\dataADUstudy\obj\x86\Debug\dataADUstudy.exe
+C:\Users\jie.jie-PC\Desktop\c#dataADUstudy\dataADUstudy\dataADUstudy\obj\x86\Debug\dataADUstudy.pdb
+C:\Users\jie.jie-PC\Desktop\c#dataADUstudy\dataADUstudy\dataADUstudy\obj\x86\Debug\dataADUstudy.csprojResolveAssemblyReference.cache
+C:\Users\jie.jie-PC\Desktop\c#dataADUstudy\dataADUstudy\dataADUstudy\bin\Debug\MySql.Data.dll
+C:\Users\jie.jie-PC\Desktop\c#dataADUstudy\dataADUstudy\dataADUstudy\obj\x86\Debug\dataADUstudy.窗口程序.login.resources
+C:\Users\jie.jie-PC\Desktop\c#dataADUstudy\dataADUstudy\dataADUstudy\obj\x86\Debug\dataADUstudy.窗口程序.regist.resources
