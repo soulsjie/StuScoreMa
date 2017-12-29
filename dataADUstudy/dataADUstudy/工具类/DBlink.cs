@@ -45,17 +45,16 @@ namespace dataADUstudy
         }
        
         //执行查询的sql
-        public MySqlDataReader search(String str)
+        public Boolean search(String str)
         {
             sqlCmd.CommandText = str;
+            Boolean tag = false;
             MySqlDataReader rec = sqlCmd.ExecuteReader();//创建结果集
             while (rec.Read())
             {
-                Console.WriteLine(rec.GetInt32(0));
-                Console.WriteLine(rec.GetString(1));
-                Console.WriteLine(rec.GetString(2));
+                tag = true;
             }
-            return rec;
+            return tag;
         }
         //执行增删改的sql
         public Boolean UpdataDeletAdd(string str)
@@ -94,6 +93,11 @@ namespace dataADUstudy
             int aa = 0;
             //初始化数据
             ScoreInfo.id.Clear();
+            ScoreInfo.number.Clear();
+            ScoreInfo.xueqi.Clear();
+            ScoreInfo.kecheng.Clear();
+            ScoreInfo.chengji.Clear();
+            ScoreInfo.name.Clear();
             while (rec.Read())  //查询到数据结果
             {
                 ScoreInfo.id.Add(rec.GetString(0));     //将查询到的id存储到数据实体类
@@ -106,6 +110,34 @@ namespace dataADUstudy
                 aa++;
             }
             Console.WriteLine("获取到"+aa+"条数据");
+            return tag;
+        }
+        //获取用户信息表中的数据
+        public Boolean GetUserInfoData(string str)
+        {
+            sqlCmd.CommandText = str;
+            Boolean tag = false;
+            MySqlDataReader rec = sqlCmd.ExecuteReader();//创建结果集
+            int aa = 0;
+            //初始化数据
+              LoginInfo.idList.Clear(); 
+              LoginInfo.usernameList.Clear(); 
+              LoginInfo.passwordList.Clear(); 
+              LoginInfo.SfList.Clear(); 
+              LoginInfo.numberList.Clear();
+              LoginInfo.banjiList.Clear(); 
+            while (rec.Read())  //查询到数据结果
+            {
+                LoginInfo.idList.Add(rec.GetString(0));     //将查询到的id存储到数据实体类
+                LoginInfo.usernameList.Add(rec.GetString(1));//将查询到的用户名存储到数据实体类
+                LoginInfo.passwordList.Add(rec.GetString(2));//将查询到的密码存储到数据实体类
+                LoginInfo.SfList.Add(rec.GetString(3));//将查询到的身份存储到数据实体类
+                LoginInfo.numberList.Add(rec.GetString(5));//将查询到的编号储到数据实体类
+                LoginInfo.banjiList.Add(rec.GetString(7));//将查询到的班级存储到数据实体类
+                tag = true;    //查询到用户数据
+                aa++;
+            }
+            Console.WriteLine("获取到" + aa + "条数据");
             return tag;
         }
     }

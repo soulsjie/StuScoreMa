@@ -22,13 +22,14 @@ namespace dataADUstudy.窗口程序
         //注册界面初始化
         private void regist_Load(object sender, EventArgs e)
         {
-            MaximizeBox = false;        //关闭登录窗口的最大化功能
+            MaximizeBox = false;        //关闭注册窗口的最大化功能
             RegistIdentity.SelectedIndex = 2;//设置下拉菜单的默认选项
             //将所有提示信息的lable置空
-            label8 .Text= "";
-            label9.Text = "";
-            label11.Text = "";
+            label8 .Text= "*必填";
+            label9.Text = "*必填";
+            label11.Text = "*必填";
             label12.Text = "";
+            label14.Text = "*必填";
             button1.Enabled = false; //用户未输入注册信息时，默认注册按钮不可点击
             PuanDuanSF.panduanshenfen(RegistIdentity.SelectedIndex);//根据用户选择的值判断用户身份
             if(quanju.sf.Equals("s")){
@@ -117,20 +118,45 @@ namespace dataADUstudy.窗口程序
             DBlink db = new DBlink();   //创建数据库连接对象
             if (db.DBconn()) { //连接数据库
                 string str ="insert into login_info(username,pass,SF,number,banji) values('"+RGname.Text+"','"+RGpass.Text+"','"+quanju.sf+"','"+RGnumber.Text+"','"+RGbanji.Text+"');";
+                string info = "注册成功，请等待管理员审核！";
+                //如果是管理员执行的添加用户时tag直接为1,即不用审核
+                if (LoginInfo.isadmin)
+                {
+                    info = "添加用户成功，该用户可以直接登录！";
+                    str = "insert into login_info(username,pass,SF,tag,number,banji) values('" + RGname.Text + "','" + RGpass.Text + "','" + quanju.sf + "',1,'" + RGnumber.Text + "','" + RGbanji.Text + "');";
+                }
                 if (db.UpdataDeletAdd(str)) {
-                    DialogResult dr = MessageBox.Show("注册成功返回登录", "标题", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                    DialogResult dr = MessageBox.Show(info, "标题", MessageBoxButtons.OK, MessageBoxIcon.Question);
                     if (dr == DialogResult.OK)
                     {
                         this.Visible = false;//隐藏当前窗口
                     }
                 }
             }
+            
             db.DBclose();//关闭数据连接
         }
         //取消事件
         private void button2_Click(object sender, EventArgs e)
         {
             this.Visible = false;
+        }
+        //用户注册输入编号时动态检验该编号是否可用
+        private void RGnumber_KeyUp(object sender, KeyEventArgs e)
+        {
+            DBlink db = new DBlink();   //创建数据库连接对象
+            if (db.DBconn())
+            { //连接数据库
+                string str = "select * from login_info where number='" + RGnumber.Text+ "'";
+                if (db.search(str))
+                {
+                    label11.Text = "*该编号不可用";
+                }
+                else {
+                    label11.Text = "*编号可以使用";
+                }
+            }
+            db.DBclose();//关闭数据连接
         }
     }
 }
