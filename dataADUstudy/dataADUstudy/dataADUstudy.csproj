@@ -54,7 +54,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="业务逻辑层\DoLogin.cs" />
     <Compile Include="工具类\DBlink.cs" />
     <Compile Include="工具类\PuanDuanSF.cs" />
     <Compile Include="工具类\YanZhenMa.cs" />

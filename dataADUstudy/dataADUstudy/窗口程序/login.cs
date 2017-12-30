@@ -21,17 +21,29 @@ namespace dataADUstudy.窗口程序
         private void login_Load(object sender, EventArgs e)
         {
             label6.Text = "";
-            //测试使用数据可删除
-            Tusername.Text = "jie";
-            Tpass.Text = "jie";
-
             identity.SelectedIndex = 0; //登录系统的身份默认是学生
             MaximizeBox = false;        //关闭登录窗口的最大化功能
             Verification_Code.Text=YanZhenMa.Code();                     //动态生成验证码
+            DoLogin.Enabled = false;    //默认在不输入验证码时无法点击登录按钮
+//-------------------------测试数据-------------------------
+            //学生测试数据
+            //Tusername.Text = "jie";
+            //Tpass.Text = "jie";
+
+            //管理员测试数据
+            Tusername.Text = "ad";
+            Tpass.Text = "ad";
+            identity.SelectedIndex = 2;
+
+            //教师测试数据
+            //Tusername.Text = "te";
+            //Tpass.Text = "te";
+            //identity.SelectedIndex = 1;
 
             Verification_Code_in.Text = Verification_Code.Text;//测试时将填写验证码的步骤省略
-
-            DoLogin.Enabled = false;    //默认在不输入验证码时无法点击登录按钮
+            DoLogin.Enabled = true;    //辅助测试
+//-------------------------测试数据-------------------------
+            
             
         }
         

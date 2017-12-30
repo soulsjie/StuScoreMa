@@ -13,13 +13,16 @@ namespace dataADUstudy
 {
     public partial class ZhuChaiDan : Form
     {
+        //生成注册界面的新窗口并将其隐藏，在管理员点击添加新用户时才使其显示
+        regist RG = new regist();
         public ZhuChaiDan()
         {
             InitializeComponent();
         }
 //--------------------------------------------------------------主菜单初始化---------------------------------------------
         private void ZhuChaiDan_Load(object sender, EventArgs e)
-        {  
+        {
+            RG.Visible = false;         //隐藏注册面板
             adminmnue.Visible = false;      //隐藏管理员菜单
             stumnue.Visible = false;        //隐藏学生菜单
             teamnue.Visible = false;        //隐藏教师菜单
@@ -100,7 +103,10 @@ namespace dataADUstudy
             //控制操作的出现位置，给控件赋值
             daishenghe.Top = 400;
             daishenghe.Left = 30;
-            daishenghe.Visible = true;
+            daishenghe.Visible = true;  //显示审核操作面板
+            panel1.Visible = false;     //隐藏删除操作面板
+            RG.Visible = false;//隐藏注册窗体
+            
         }
         //管理员输入审核用户名时验证该用户是否存在，并提示
         private void textBox1_KeyUp(object sender, KeyEventArgs e)
@@ -186,15 +192,16 @@ namespace dataADUstudy
             dataGridView2.Height = 350;
             dataGridView2.Visible = true;//显示数据集
             daishenghe.Visible = false;//隐藏操作面板
+            panel1.Visible = false;//隐藏删除操作面板
+            RG.Visible = false;//隐藏注册窗体
         }
  //二、用户管理
 //1.添加用户
         private void 添加用户ToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            LoginInfo.isadmin = true;
-            //生成注册界面的新窗口
-            regist RG = new regist();
-            RG.Show();
+            LoginInfo.isadmin = true;//将数据实体类中的管理员表示置为true，注册时判断该值执行不同sql
+            RG.Visible = true;//显示注册窗体
+            //RG.Show();
         } 
 //2.删除用户
         private void 删除用户ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -244,7 +251,9 @@ namespace dataADUstudy
             //控制操作的出现位置，给控件赋值
             panel1.Top = 400;
             panel1.Left = 30;
-            panel1.Visible = true;
+            panel1.Visible = true;  //显示删除操作面板
+            daishenghe.Visible = false; //隐藏审核操作面板
+            RG.Visible = false;         //隐藏注册窗体
         }
         //管理员输入审核用户名时验证该用户是否存在，并提示
         private void textBox2_KeyUp(object sender, KeyEventArgs e)
@@ -269,7 +278,7 @@ namespace dataADUstudy
         private void button2_Click(object sender, EventArgs e)
         {
 
-            string str = "delete from login_info where username='" + textBox2.Text + "'";
+            string str = "delete from login_info where username='" + textBox2.Text + "' and SF!= 'a'";
             DBlink db = new DBlink();
             if (db.DBconn())
             {
@@ -286,6 +295,10 @@ namespace dataADUstudy
             }
         }
 //三、退出系统
+        private void 退出登录ToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+                Application.Exit();
+        }
 //--------------------------------------------------------------教师功能---------------------------------------------
  //一、成绩查询
  //1.查询所有成绩
@@ -317,6 +330,8 @@ namespace dataADUstudy
                 this.dataGridView1.Rows[index].Cells[5].Value = ScoreInfo.name[i];      //填充姓名
             }
         }
+
+        
         
 
 //2.查询个人成绩
@@ -325,11 +340,32 @@ namespace dataADUstudy
 //二、账号管理
  //1.修改登录密码
 //三、退出系统
+        private void 退出登录ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
 //--------------------------------------------------------------学生功能---------------------------------------------
 //一、成绩查询
  //1.查询个人成绩
 //二、账号管理
  //1.修改登录密码
  //三、退出系统
+        private void 退出登录ToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+//--------------------------------------------------------------窗体退出按钮被点击时---------------------------------------------
+        private void ZhuChaiDan_Closing(object sender, FormClosingEventArgs e)
+        {
+            if (MessageBox.Show("是否退出本系统?", "确认...", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                e.Cancel = false;
+            }
+            else
+            {
+                e.Cancel = true;
+            }
+        }
     }
 }

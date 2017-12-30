@@ -73,10 +73,10 @@
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
             this.adminmnue.SuspendLayout();
             this.teamnue.SuspendLayout();
             this.stumnue.SuspendLayout();
@@ -135,14 +135,14 @@
             // 添加用户ToolStripMenuItem1
             // 
             this.添加用户ToolStripMenuItem1.Name = "添加用户ToolStripMenuItem1";
-            this.添加用户ToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.添加用户ToolStripMenuItem1.Size = new System.Drawing.Size(124, 22);
             this.添加用户ToolStripMenuItem1.Text = "添加用户";
             this.添加用户ToolStripMenuItem1.Click += new System.EventHandler(this.添加用户ToolStripMenuItem1_Click);
             // 
             // 删除用户ToolStripMenuItem
             // 
             this.删除用户ToolStripMenuItem.Name = "删除用户ToolStripMenuItem";
-            this.删除用户ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.删除用户ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.删除用户ToolStripMenuItem.Text = "删除用户";
             this.删除用户ToolStripMenuItem.Click += new System.EventHandler(this.删除用户ToolStripMenuItem_Click);
             // 
@@ -152,6 +152,7 @@
             this.退出登录ToolStripMenuItem2.Name = "退出登录ToolStripMenuItem2";
             this.退出登录ToolStripMenuItem2.Size = new System.Drawing.Size(68, 21);
             this.退出登录ToolStripMenuItem2.Text = "退出登录";
+            this.退出登录ToolStripMenuItem2.Click += new System.EventHandler(this.退出登录ToolStripMenuItem2_Click);
             // 
             // teamnue
             // 
@@ -223,6 +224,7 @@
             this.退出登录ToolStripMenuItem.Name = "退出登录ToolStripMenuItem";
             this.退出登录ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
             this.退出登录ToolStripMenuItem.Text = "退出登录";
+            this.退出登录ToolStripMenuItem.Click += new System.EventHandler(this.退出登录ToolStripMenuItem_Click);
             // 
             // stumnue
             // 
@@ -248,7 +250,7 @@
             // 个人成绩查询ToolStripMenuItem1
             // 
             this.个人成绩查询ToolStripMenuItem1.Name = "个人成绩查询ToolStripMenuItem1";
-            this.个人成绩查询ToolStripMenuItem1.Size = new System.Drawing.Size(148, 22);
+            this.个人成绩查询ToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.个人成绩查询ToolStripMenuItem1.Text = "个人成绩查询";
             // 
             // 账号管理ToolStripMenuItem1
@@ -272,6 +274,7 @@
             this.退出登录ToolStripMenuItem1.Name = "退出登录ToolStripMenuItem1";
             this.退出登录ToolStripMenuItem1.Size = new System.Drawing.Size(68, 21);
             this.退出登录ToolStripMenuItem1.Text = "退出登录";
+            this.退出登录ToolStripMenuItem1.Click += new System.EventHandler(this.退出登录ToolStripMenuItem1_Click);
             // 
             // label1
             // 
@@ -476,6 +479,28 @@
             this.panel1.Size = new System.Drawing.Size(943, 79);
             this.panel1.TabIndex = 11;
             // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Location = new System.Drawing.Point(357, 53);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(100, 23);
+            this.button2.TabIndex = 10;
+            this.button2.Text = "删除用户";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(479, 23);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(41, 12);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "label3";
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -496,28 +521,6 @@
             this.textBox2.TabIndex = 8;
             this.textBox2.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox2_KeyUp);
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(479, 23);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(41, 12);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "label3";
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(357, 53);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(100, 23);
-            this.button2.TabIndex = 10;
-            this.button2.Text = "删除用户";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // ZhuChaiDan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -537,6 +540,7 @@
             this.Name = "ZhuChaiDan";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "主菜单";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ZhuChaiDan_Closing);
             this.Load += new System.EventHandler(this.ZhuChaiDan_Load);
             this.adminmnue.ResumeLayout(false);
             this.adminmnue.PerformLayout();
