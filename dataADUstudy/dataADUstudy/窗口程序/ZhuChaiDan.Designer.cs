@@ -41,8 +41,6 @@
             this.成绩查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.查询所有成绩ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.个人成绩查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.最高成绩查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.最低成绩查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.账号管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.修改密码ToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.退出登录ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -77,6 +75,10 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.GeRenChengji_op = new System.Windows.Forms.Panel();
+            this.StuNum_in = new System.Windows.Forms.TextBox();
+            this.Search_TS = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.adminmnue.SuspendLayout();
             this.teamnue.SuspendLayout();
             this.stumnue.SuspendLayout();
@@ -84,6 +86,7 @@
             this.daishenghe.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.panel1.SuspendLayout();
+            this.GeRenChengji_op.SuspendLayout();
             this.SuspendLayout();
             // 
             // adminmnue
@@ -170,9 +173,7 @@
             // 
             this.成绩查询ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.查询所有成绩ToolStripMenuItem,
-            this.个人成绩查询ToolStripMenuItem,
-            this.最高成绩查询ToolStripMenuItem,
-            this.最低成绩查询ToolStripMenuItem});
+            this.个人成绩查询ToolStripMenuItem});
             this.成绩查询ToolStripMenuItem.ForeColor = System.Drawing.Color.DarkRed;
             this.成绩查询ToolStripMenuItem.Name = "成绩查询ToolStripMenuItem";
             this.成绩查询ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
@@ -181,27 +182,16 @@
             // 查询所有成绩ToolStripMenuItem
             // 
             this.查询所有成绩ToolStripMenuItem.Name = "查询所有成绩ToolStripMenuItem";
-            this.查询所有成绩ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.查询所有成绩ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.查询所有成绩ToolStripMenuItem.Text = "查询所有成绩";
             this.查询所有成绩ToolStripMenuItem.Click += new System.EventHandler(this.查询所有成绩ToolStripMenuItem_Click);
             // 
             // 个人成绩查询ToolStripMenuItem
             // 
             this.个人成绩查询ToolStripMenuItem.Name = "个人成绩查询ToolStripMenuItem";
-            this.个人成绩查询ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.个人成绩查询ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.个人成绩查询ToolStripMenuItem.Text = "个人成绩查询";
-            // 
-            // 最高成绩查询ToolStripMenuItem
-            // 
-            this.最高成绩查询ToolStripMenuItem.Name = "最高成绩查询ToolStripMenuItem";
-            this.最高成绩查询ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.最高成绩查询ToolStripMenuItem.Text = "最高成绩查询";
-            // 
-            // 最低成绩查询ToolStripMenuItem
-            // 
-            this.最低成绩查询ToolStripMenuItem.Name = "最低成绩查询ToolStripMenuItem";
-            this.最低成绩查询ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.最低成绩查询ToolStripMenuItem.Text = "最低成绩查询";
+            this.个人成绩查询ToolStripMenuItem.Click += new System.EventHandler(this.个人成绩查询ToolStripMenuItem_Click);
             // 
             // 账号管理ToolStripMenuItem
             // 
@@ -215,7 +205,7 @@
             // 修改密码ToolStripMenuItem2
             // 
             this.修改密码ToolStripMenuItem2.Name = "修改密码ToolStripMenuItem2";
-            this.修改密码ToolStripMenuItem2.Size = new System.Drawing.Size(124, 22);
+            this.修改密码ToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
             this.修改密码ToolStripMenuItem2.Text = "修改密码";
             // 
             // 退出登录ToolStripMenuItem
@@ -252,6 +242,7 @@
             this.个人成绩查询ToolStripMenuItem1.Name = "个人成绩查询ToolStripMenuItem1";
             this.个人成绩查询ToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.个人成绩查询ToolStripMenuItem1.Text = "个人成绩查询";
+            this.个人成绩查询ToolStripMenuItem1.Click += new System.EventHandler(this.个人成绩查询ToolStripMenuItem1_Click);
             // 
             // 账号管理ToolStripMenuItem1
             // 
@@ -265,7 +256,7 @@
             // 修改密码ToolStripMenuItem1
             // 
             this.修改密码ToolStripMenuItem1.Name = "修改密码ToolStripMenuItem1";
-            this.修改密码ToolStripMenuItem1.Size = new System.Drawing.Size(124, 22);
+            this.修改密码ToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.修改密码ToolStripMenuItem1.Text = "修改密码";
             // 
             // 退出登录ToolStripMenuItem1
@@ -389,7 +380,7 @@
             this.daishenghe.Controls.Add(this.textBox1);
             this.daishenghe.Controls.Add(this.label2);
             this.daishenghe.Controls.Add(this.button1);
-            this.daishenghe.Location = new System.Drawing.Point(31, 268);
+            this.daishenghe.Location = new System.Drawing.Point(31, 122);
             this.daishenghe.Name = "daishenghe";
             this.daishenghe.Size = new System.Drawing.Size(943, 68);
             this.daishenghe.TabIndex = 9;
@@ -418,7 +409,7 @@
             this.Column5,
             this.Column6});
             this.dataGridView2.GridColor = System.Drawing.SystemColors.ActiveCaption;
-            this.dataGridView2.Location = new System.Drawing.Point(31, 123);
+            this.dataGridView2.Location = new System.Drawing.Point(31, 78);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
             this.dataGridView2.RowTemplate.Height = 23;
@@ -474,7 +465,7 @@
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.textBox2);
-            this.panel1.Location = new System.Drawing.Point(31, 367);
+            this.panel1.Location = new System.Drawing.Point(31, 196);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(943, 79);
             this.panel1.TabIndex = 11;
@@ -521,12 +512,54 @@
             this.textBox2.TabIndex = 8;
             this.textBox2.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox2_KeyUp);
             // 
+            // GeRenChengji_op
+            // 
+            this.GeRenChengji_op.BackColor = System.Drawing.Color.Transparent;
+            this.GeRenChengji_op.Controls.Add(this.StuNum_in);
+            this.GeRenChengji_op.Controls.Add(this.Search_TS);
+            this.GeRenChengji_op.Controls.Add(this.label6);
+            this.GeRenChengji_op.Location = new System.Drawing.Point(31, 282);
+            this.GeRenChengji_op.Name = "GeRenChengji_op";
+            this.GeRenChengji_op.Size = new System.Drawing.Size(943, 100);
+            this.GeRenChengji_op.TabIndex = 12;
+            // 
+            // StuNum_in
+            // 
+            this.StuNum_in.Location = new System.Drawing.Point(357, 34);
+            this.StuNum_in.Name = "StuNum_in";
+            this.StuNum_in.Size = new System.Drawing.Size(100, 21);
+            this.StuNum_in.TabIndex = 7;
+            this.StuNum_in.KeyUp += new System.Windows.Forms.KeyEventHandler(this.StuNum_in_KeyUp);
+            // 
+            // Search_TS
+            // 
+            this.Search_TS.AutoSize = true;
+            this.Search_TS.ForeColor = System.Drawing.Color.White;
+            this.Search_TS.Location = new System.Drawing.Point(479, 38);
+            this.Search_TS.Name = "Search_TS";
+            this.Search_TS.Size = new System.Drawing.Size(41, 12);
+            this.Search_TS.TabIndex = 9;
+            this.Search_TS.Text = "label3";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(224, 39);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(110, 16);
+            this.label6.TabIndex = 6;
+            this.label6.Text = "请输入学号：";
+            // 
             // ZhuChaiDan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(1008, 730);
+            this.ClientSize = new System.Drawing.Size(1008, 562);
+            this.Controls.Add(this.GeRenChengji_op);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.daishenghe);
@@ -554,6 +587,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.GeRenChengji_op.ResumeLayout(false);
+            this.GeRenChengji_op.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -571,8 +606,6 @@
         private System.Windows.Forms.ToolStripMenuItem 成绩查询ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 查询所有成绩ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 个人成绩查询ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 最高成绩查询ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 最低成绩查询ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 账号管理ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 修改密码ToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem 退出登录ToolStripMenuItem;
@@ -609,6 +642,10 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Panel GeRenChengji_op;
+        private System.Windows.Forms.TextBox StuNum_in;
+        private System.Windows.Forms.Label Search_TS;
+        private System.Windows.Forms.Label label6;
     }
 }
 

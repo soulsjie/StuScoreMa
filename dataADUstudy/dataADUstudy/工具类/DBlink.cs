@@ -6,6 +6,7 @@ using System.Data;
 using MySql.Data.MySqlClient;
 using System.Data.SqlClient;
 using System.Data.OleDb;
+using System.Windows.Forms;
 using dataADUstudy.数据实体类;
 
 namespace dataADUstudy
@@ -27,14 +28,14 @@ namespace dataADUstudy
                 sqlCnn.Open();
                 DBtag = true;
                 if (DBtag) {
-                    Console.WriteLine("数据库连接成功");
+                    //Console.WriteLine("数据库连接成功");
                 }
             }
             catch (Exception ex)
             {
-                //MessageBox.Show(ex.Message, "error");
-                Console.WriteLine(ex.Message);
-                Console.WriteLine("数据库连接失败");
+                MessageBox.Show(ex.Message, "error");
+               // Console.WriteLine(ex.Message);
+                //Console.WriteLine("数据库连接失败");
             }
             finally
             {
@@ -53,6 +54,7 @@ namespace dataADUstudy
             while (rec.Read())
             {
                 tag = true;
+               // Console.WriteLine("查询到数据");
             }
             return tag;
         }
@@ -66,7 +68,7 @@ namespace dataADUstudy
         public void DBclose()
         {
             sqlCnn.Close();
-            Console.WriteLine("数据库连接关闭");
+            //Console.WriteLine("数据库连接关闭");
             //Console.ReadKey();
         }
         //获取login所需要的数据
@@ -79,6 +81,8 @@ namespace dataADUstudy
                 LoginInfo.password = rec.GetString(2);  //将密码存放在数据实体类
                 LoginInfo.sf = rec.GetString(3);      //将身份标记存放到数据实体类
                 LoginInfo.tag = rec.GetInt32(4);      //将审核标记存放在数据实体类
+                LoginInfo.number = rec.GetString(5);      //将学号存放在数据实体类
+                LoginInfo.banji = rec.GetString(7);      //将班级存放在数据实体类
                 Console.WriteLine("查询到的信息：用户名{0},密码{1},身份标记{2},审核标记{3}", LoginInfo.username, LoginInfo.password, LoginInfo.sf, LoginInfo.tag);
                 return true;    //查询到用户数据
             }
@@ -109,7 +113,7 @@ namespace dataADUstudy
                 tag = true;    //查询到用户数据
                 aa++;
             }
-            Console.WriteLine("获取到"+aa+"条数据");
+            //Console.WriteLine("获取到"+aa+"条数据");
             return tag;
         }
         //获取用户信息表中的数据
@@ -137,7 +141,7 @@ namespace dataADUstudy
                 tag = true;    //查询到用户数据
                 aa++;
             }
-            Console.WriteLine("获取到" + aa + "条数据");
+            //Console.WriteLine("获取到" + aa + "条数据");
             return tag;
         }
     }

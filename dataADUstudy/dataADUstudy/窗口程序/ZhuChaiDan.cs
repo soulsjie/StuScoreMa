@@ -22,20 +22,22 @@ namespace dataADUstudy
 //--------------------------------------------------------------主菜单初始化---------------------------------------------
         private void ZhuChaiDan_Load(object sender, EventArgs e)
         {
-            RG.Visible = false;         //隐藏注册面板
+            RG.Visible = false;             //隐藏注册面板
             adminmnue.Visible = false;      //隐藏管理员菜单
             stumnue.Visible = false;        //隐藏学生菜单
             teamnue.Visible = false;        //隐藏教师菜单
-            dataGridView1.Visible = false;   //隐藏显示成绩信息的dataGridView
-            MaximizeBox = false;        //关闭主菜单窗口的最大化功能
-            //初始化隐藏待审核操作的控件
-            dataGridView2.Visible = false;
-            daishenghe.Visible = false;
-            panel1.Visible = false;//隐藏删除操作的面板
-            label3.Text = "";   //提示信息为空
-            label5.Text = "";   //提示信息为空
-            button1.Enabled = false;//审核按钮不可点击
-            button2.Enabled = false;//删除用户按钮不可点击
+            dataGridView1.Visible = false;  //隐藏显示成绩信息的dataGridView
+            GeRenChengji_op.Visible = false;//隐藏个人成绩查询操作面板
+            MaximizeBox = false;            //关闭主菜单窗口的最大化功能
+            dataGridView2.Visible = false;  //隐藏显示用户信息的dataGridView
+            daishenghe.Visible = false;     //隐藏管理员进行审核操作的面板
+            panel1.Visible = false;         //隐藏删除操作的面板
+            label3.Text = "";               //提示信息为空
+            label5.Text = "";               //提示信息为空
+            button1.Enabled = false;        //审核按钮不可点击
+            button2.Enabled = false;        //删除用户按钮不可点击
+            Search_TS.Text = "";            //查询成绩的提示信息置空
+
             //根据登录系统的身份不同，提示不同欢迎语和显示主菜单
             if(LoginInfo.sf.Equals("s")){
                 this.Text =LoginInfo.username+ "同学您好！欢迎使用学生成绩管理系统。";
@@ -141,9 +143,7 @@ namespace dataADUstudy
                     //将用户输入的内容和提示信息文本置空
                     textBox1.Text = "";
                     label3.Text = "";
-
                 }
-
             }
         }
  //2.已审核
@@ -311,6 +311,7 @@ namespace dataADUstudy
             dataGridView1.Height = 350;
             dataGridView1.Rows.Clear(); //初始化dataGridView
             dataGridView1.Visible = true;   //显示控件
+            GeRenChengji_op.Visible = false;
             DBlink db = new DBlink();       //创建数据库连接实例
             if (db.DBconn())                //连接数据库
             {
@@ -330,13 +331,55 @@ namespace dataADUstudy
                 this.dataGridView1.Rows[index].Cells[5].Value = ScoreInfo.name[i];      //填充姓名
             }
         }
-
-        
-        
-
 //2.查询个人成绩
-//3.查询学期最高成绩
-//4.查询最低成绩
+        private void 个人成绩查询ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //设置dataGridView1的属性
+            dataGridView1.Top = 25;
+            dataGridView1.Left = 30;
+            dataGridView1.Height = 350;
+            dataGridView1.Rows.Clear(); //初始化dataGridView
+            dataGridView1.Visible = true;   //显示控件
+            //初始化个人成绩查询出现的面板
+            GeRenChengji_op.Top = 400;
+            GeRenChengji_op.Left = 30;
+            GeRenChengji_op.Visible = true;  //显示个人成绩查询的操作面板
+        }
+        //教师输入要查询的学号时验证该学号的成绩信息是否已经存在
+        private void StuNum_in_KeyUp(object sender, KeyEventArgs e)
+        {
+            dataGridView1.Rows.Clear(); //初始化dataGridView
+            DBlink db = new DBlink();
+            Boolean tag = false;    //辅助标记，先查询该学号是否存在，若存在再进行数据查询的操作
+            string str = "select * from login_info where number='" + StuNum_in.Text + "'";
+            if (db.DBconn()) {//连接数据库成功
+                if (db.search(str)) {
+                    Search_TS.Text = "查询到" + StuNum_in.Text+"同学的成绩信息如上！";
+                    tag = true;
+                }
+                else{
+                    Search_TS.Text = "该用户不存在";
+                }
+            }
+            db.DBclose();//避免多线程操作数据库，影响系统报错，先关闭数据连接
+
+            if (tag) {  //输入的学号在用户名中存在
+                if (db.DBconn()) {
+                    db.GetScoreData("select * from student_score where number='" + StuNum_in.Text + "'"); //执行sql
+                    for (int i = 0; i < ScoreInfo.id.Count; i++)    //循环将数据实体类的数据存放到dataGridView中
+                    {
+                        int index = this.dataGridView1.Rows.Add();
+                        this.dataGridView1.Rows[index].Cells[0].Value = ScoreInfo.id[i];        //填充编号
+                        this.dataGridView1.Rows[index].Cells[1].Value = ScoreInfo.number[i];    //填充学号
+                        this.dataGridView1.Rows[index].Cells[2].Value = ScoreInfo.xueqi[i];     //填充课程归属
+                        this.dataGridView1.Rows[index].Cells[3].Value = ScoreInfo.kecheng[i];   //填充课程名
+                        this.dataGridView1.Rows[index].Cells[4].Value = ScoreInfo.chengji[i];   //填充成绩
+                        this.dataGridView1.Rows[index].Cells[5].Value = ScoreInfo.name[i];      //填充姓名
+                    }
+                }
+                db.DBclose();
+            }
+        }
 //二、账号管理
  //1.修改登录密码
 //三、退出系统
@@ -347,6 +390,31 @@ namespace dataADUstudy
 //--------------------------------------------------------------学生功能---------------------------------------------
 //一、成绩查询
  //1.查询个人成绩
+        private void 个人成绩查询ToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            dataGridView1.Top = 25;
+            dataGridView1.Left = 30;
+            dataGridView1.Height = 350;
+            dataGridView1.Rows.Clear(); //初始化dataGridView
+            dataGridView1.Visible = true;   //显示控件
+            DBlink db = new DBlink();
+            if (db.DBconn())
+            {
+                db.GetScoreData("select * from student_score where number='" + LoginInfo.number + "'"); //执行sql
+                for (int i = 0; i < ScoreInfo.id.Count; i++)    //循环将数据实体类的数据存放到dataGridView中
+                {
+                    int index = this.dataGridView1.Rows.Add();
+                    this.dataGridView1.Rows[index].Cells[0].Value = ScoreInfo.id[i];        //填充编号
+                    this.dataGridView1.Rows[index].Cells[1].Value = ScoreInfo.number[i];    //填充学号
+                    this.dataGridView1.Rows[index].Cells[2].Value = ScoreInfo.xueqi[i];     //填充课程归属
+                    this.dataGridView1.Rows[index].Cells[3].Value = ScoreInfo.kecheng[i];   //填充课程名
+                    this.dataGridView1.Rows[index].Cells[4].Value = ScoreInfo.chengji[i];   //填充成绩
+                    this.dataGridView1.Rows[index].Cells[5].Value = ScoreInfo.name[i];      //填充姓名
+                }
+            }
+            db.DBclose();
+           
+        }
 //二、账号管理
  //1.修改登录密码
  //三、退出系统
